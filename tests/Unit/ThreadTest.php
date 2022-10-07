@@ -2,9 +2,8 @@
 
 namespace Tests\Unit;
 
+use App\Models\Thread;
 use App\Models\User;
-use Database\Factories\ThreadFactory;
-use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
@@ -16,7 +15,7 @@ class ThreadTest extends TestCase
     {
         parent::setUp();
 
-        $this->thread = ThreadFactory::new()->create();
+        $this->thread = create(Thread::class);
     }
 
     /** @test*/

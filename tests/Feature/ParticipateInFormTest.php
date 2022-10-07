@@ -2,10 +2,8 @@
 
 namespace Tests\Feature;
 
-use Database\Factories\ReplyFactory;
-use Database\Factories\ThreadFactory;
-use Database\Factories\UserFactory;
-use Illuminate\Auth\AuthenticationException;
+use App\Models\Reply;
+use App\Models\Thread;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
@@ -15,9 +13,9 @@ class ParticipateInFormTest extends TestCase
     /** @test*/
     public function an_authenticated_user_may_participate_in_form_threads()
     {
-        $this->be(UserFactory::new()->create());
-        $thread = ThreadFactory::new()->create();
-        $reply = ReplyFactory::new()->make();
+        $this->signIn();
+        $thread = create(Thread::class);
+        $reply = create(Reply::class);
 
         $this->post($thread->path() . '/replies', $reply->toArray());
 
