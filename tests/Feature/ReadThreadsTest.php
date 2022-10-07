@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use Database\Factories\ReplyFactory;
-use Database\Factories\ThreadFactory;
+use App\Models\Reply;
+use App\Models\Thread;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -15,7 +15,7 @@ class ReadThreadsTest extends TestCase
     {
         parent::setUp();
 
-        $this->thread = ThreadFactory::new()->create();
+        $this->thread = create(Thread::class);
     }
 
     /** @test */
@@ -42,7 +42,7 @@ class ReadThreadsTest extends TestCase
     /** @test*/
     public function a_user_can_read_replies_that_are_associated_with_a_thread()
     {
-        $reply = ReplyFactory::new(['thread_id' => $this->thread->id])->create();
+        $reply = create(Reply::class, ['thread_id' => $this->thread->id]);
 
         $response = $this->get($this->thread->path());
 
