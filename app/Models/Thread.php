@@ -11,11 +11,11 @@ class Thread extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'body', 'user_id'];
+    protected $fillable = ['title', 'body', 'user_id', 'channel_id'];
 
     public function path(): string
     {
-        return '/threads/' . $this->id;
+        return "/threads/{$this->channel->slug}/{$this->id}";
     }
 
     public function replies(): HasMany
@@ -31,5 +31,10 @@ class Thread extends Model
     public function addReply(array $reply)
     {
         $this->replies()->create($reply);
+    }
+
+    public function channel(): belongsTo
+    {
+        return $this->belongsTo(Channel::class);
     }
 }
