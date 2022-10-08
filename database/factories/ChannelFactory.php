@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Thread>
  */
-class ThreadFactory extends Factory
+class ChannelFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,11 +16,11 @@ class ThreadFactory extends Factory
      */
     public function definition()
     {
+        $word = $this->faker->word;
+
         return [
-            'user_id' => UserFactory::new()->create()->id,
-            'channel_id' => ChannelFactory::new()->create()->id,
-            'title' => $this->faker->sentence,
-            'body' => $this->faker->paragraph,
+            'name' => $word,
+            'slug' => $word
         ];
     }
 }
