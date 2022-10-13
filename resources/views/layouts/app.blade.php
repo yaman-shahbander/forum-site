@@ -38,6 +38,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/threads">Threads</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('threads.create')}}">New Thread</a>
+                        </li>
                         <li class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Channels

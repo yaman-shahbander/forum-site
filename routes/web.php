@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::controller(ThreadsController::class)->group(function () {
     Route::get('/threads', 'index');
-    Route::get('/threads/create', 'create');
+    Route::get('/threads/create', 'create')->name('threads.create');
     Route::get('/threads/{channel}','index');
     Route::get('/threads/{channel}/{thread}', 'show');
     Route::post('/threads','store');
