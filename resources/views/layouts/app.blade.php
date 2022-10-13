@@ -38,6 +38,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/threads">Threads</a>
                         </li>
+                        <li class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Channels
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                @foreach(App\Models\Channel::all() as $channel)
+                                    <li><a class="dropdown-item" href="/threads/{{$channel->slug}}">{{$channel->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

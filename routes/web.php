@@ -19,12 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/threads', [ThreadsController::class, 'index']);
-Route::get('/threads/create', [ThreadsController::class, 'create']);
-Route::get('/threads/{channel}/{thread}', [ThreadsController::class, 'show']);
-Route::post('/threads', [ThreadsController::class, 'store']);
+Route::controller(ThreadsController::class)->group(function () {
+    Route::get('/threads', 'index');
+    Route::get('/threads/create', 'create');
+    Route::get('/threads/{channel}','index');
+    Route::get('/threads/{channel}/{thread}', 'show');
+    Route::post('/threads','store');
+});
 Route::post('/threads/{channel}/{thread}/replies', [RepliesController::class, 'store']);
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

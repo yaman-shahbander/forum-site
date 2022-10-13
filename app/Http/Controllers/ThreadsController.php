@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Channel;
 use App\Models\Thread;
 use Illuminate\Http\Request;
 
@@ -17,9 +18,12 @@ class ThreadsController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Channel $channel)
     {
-        $threads = Thread::latest()->get();
+        $threads = $channel->exists
+            ? $channel->threads()->latest()->get()
+            : Thread::latest()->get();
+
         return view('threads.index', compact('threads'));
     }
 
