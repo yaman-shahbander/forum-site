@@ -36,10 +36,27 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/threads">Threads</a>
+                            <li class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Browse
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="/threads">Threads</a></li>
+                                    @if(auth()->check())
+                                        <li><a class="dropdown-item" href="/threads?by={{auth()->user()->name}}">My Threads</a></li>
+                                    @endif
+                                </ul>
+                            </li>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('threads.create')}}">New Thread</a>
+                            <li class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="{{route('threads.create')}}" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Threads Operations
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" >New Thread</a></li>
+                                </ul>
+                            </li>
                         </li>
                         <li class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
