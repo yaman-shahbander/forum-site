@@ -13,6 +13,14 @@ class Thread extends Model
 
     protected $fillable = ['title', 'body', 'user_id', 'channel_id'];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope('replyCount', function ($builder) {
+           $builder->withCount('replies');
+        });
+    }
+
     public function path(): string
     {
         return "/threads/{$this->channel->slug}/{$this->id}";

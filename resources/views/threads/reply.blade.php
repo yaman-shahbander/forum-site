@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-10">
     <div class="card-header">
         <a href="#">{{ $reply->owner->name }}</a>
         said {{ $reply->created_at->diffForHumans() }}...
