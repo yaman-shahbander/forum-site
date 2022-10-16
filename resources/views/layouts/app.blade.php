@@ -17,6 +17,8 @@
             margin-bottom: 20px
         }
         .mb-10 { margin-bottom: 10px }
+        .level { display: flex; align-items: center }
+        .flex { flex: 1 }
     </style>
 
     <!-- Scripts -->
@@ -46,6 +48,7 @@
                                     @if(auth()->check())
                                         <li><a class="dropdown-item" href="/threads?by={{auth()->user()->name}}">My Threads</a></li>
                                     @endif
+                                    <li><a class="dropdown-item" href="/threads?popular=1">Popular Threads</a></li>
                                 </ul>
                             </li>
                         </li>
