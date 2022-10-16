@@ -16,6 +16,7 @@
         .justify-content-center {
             margin-bottom: 20px
         }
+        .mb-10 { margin-bottom: 10px }
     </style>
 
     <!-- Scripts -->
