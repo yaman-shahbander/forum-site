@@ -50,11 +50,11 @@
                         </li>
                         <li class="nav-item">
                             <li class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="{{route('threads.create')}}" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Threads Operations
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" >New Thread</a></li>
+                                    <li><a class="dropdown-item" href="{{route('threads.create')}}">New Thread</a></li>
                                 </ul>
                             </li>
                         </li>
