@@ -29,7 +29,7 @@ Route::controller(ThreadsController::class)->group(function () {
 });
 Route::post('/threads/{channel}/{thread}/replies', [RepliesController::class, 'store']);
 
-Route::post('/replies/{reply}/favorites', [FavoritesController::class, 'store']);
+Route::post('/replies/{reply}/favorites', [FavoritesController::class, 'store'])->name('favorites.reply');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
