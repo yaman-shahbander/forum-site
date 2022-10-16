@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThreadsController;
 use App\Http\Controllers\RepliesController;
+use App\Http\Controllers\FavoritesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::controller(ThreadsController::class)->group(function () {
     Route::post('/threads','store');
 });
 Route::post('/threads/{channel}/{thread}/replies', [RepliesController::class, 'store']);
+
+Route::post('/replies/{reply}/favorites', [FavoritesController::class, 'store']);
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
