@@ -29,6 +29,7 @@ Route::controller(ThreadsController::class)->group(function () {
     Route::get('/threads/create', 'create')->name('threads.create');
     Route::get('/threads/{channel}','index');
     Route::get('/threads/{channel}/{thread}', 'show');
+    Route::delete('/threads/{channel}/{thread}', 'destroy');
     Route::post('/threads','store');
 });
 Route::post('/threads/{channel}/{thread}/replies', [RepliesController::class, 'store']);
