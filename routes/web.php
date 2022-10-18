@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThreadsController;
 use App\Http\Controllers\RepliesController;
 use App\Http\Controllers\FavoritesController;
+use App\Http\Controllers\ProfilesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::controller(ThreadsController::class)->group(function () {
     Route::get('/threads', 'index');
     Route::get('/threads/create', 'create')->name('threads.create');
@@ -28,8 +32,5 @@ Route::controller(ThreadsController::class)->group(function () {
     Route::post('/threads','store');
 });
 Route::post('/threads/{channel}/{thread}/replies', [RepliesController::class, 'store']);
-
 Route::post('/replies/{reply}/favorites', [FavoritesController::class, 'store'])->name('favorites.reply');
-
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profiles/{user}', [ProfilesController::class, 'show'])->name('profile');
