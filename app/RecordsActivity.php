@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Models\Activity;
-use App\Models\Thread;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait RecordsActivity
