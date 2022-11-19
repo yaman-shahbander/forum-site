@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Activity;
 use App\Models\Channel;
 use App\Models\Reply;
 use App\Models\Thread;
@@ -67,14 +68,6 @@ class CreateThreadsTest extends TestCase
         return $this->post('threads', $thread->toArray());
     }
 
-//    /** @test */
-//    public function guests_can_not_delete_threads()
-//    {
-//        $thread = create(Thread::class);
-//        $response = $this->delete($thread->path());
-//        $response->assertRedirect('/login');
-//    }
-
     /** @test */
     public function unauthorized_users_may_not_delete_threads()
     {
@@ -94,5 +87,13 @@ class CreateThreadsTest extends TestCase
         $response->assertStatus(204);
         $this->assertDatabaseMissing('threads', ['id' => $thread->id]);
         $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
+        $this->assertDatabaseMissing('activities', [
+            'subject_id' => $thread->id,
+            'subject_type' => get_class($thread)
+        ]);
+        $this->assertDatabaseMissing('activities', [
+            'subject_id' => $reply->id,
+            'subject_type' => get_class($reply)
+        ]);
     }
 }
