@@ -18,4 +18,13 @@
     <div class="card-body">
         {{ $reply->body }}
     </div>
+    @can('delete', $reply)
+        <div class="card-footer">
+            <form action="{{ route('reply.destroy', ['reply' => $reply->id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+            </form>
+        </div>
+    @endcan
 </div>

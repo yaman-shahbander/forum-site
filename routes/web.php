@@ -32,6 +32,11 @@ Route::controller(ThreadsController::class)->group(function () {
     Route::delete('/threads/{channel}/{thread}', 'destroy');
     Route::post('/threads','store');
 });
-Route::post('/threads/{channel}/{thread}/replies', [RepliesController::class, 'store']);
+
+Route::controller(RepliesController::class)->group(function () {
+    Route::post('/threads/{channel}/{thread}/replies', 'store');
+    Route::delete('/replies/{reply}', 'destroy')->name('reply.destroy');
+});
+
 Route::post('/replies/{reply}/favorites', [FavoritesController::class, 'store'])->name('favorites.reply');
 Route::get('/profiles/{user}', [ProfilesController::class, 'show'])->name('profile');
