@@ -15,8 +15,8 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import Flash from './components/Flash.vue';
+app.component('flash', Flash);
 
 /**
  * The following block of code may be used to automatically register your
